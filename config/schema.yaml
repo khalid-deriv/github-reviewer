@@ -1,0 +1,43 @@
+# Configuration schema for the AI-powered GitHub Pull Request Review Agent
+
+directives:
+  - type: list
+    description: List of paths to `.md` files containing coding standards and guidelines.
+    items:
+      type: string
+
+exclusions:
+  - type: list
+    description: List of files or directories to exclude from the review.
+    items:
+      type: string
+
+llm_parameters:
+  temperature:
+    type: float
+    description: Sampling temperature for the LLM.
+    default: 0.7
+  max_tokens:
+    type: integer
+    description: Maximum number of tokens to generate.
+    default: 2048
+  model_name:
+    type: string
+    description: Name of the LLM model to use.
+    default: "gpt-4"
+
+llm_backends:
+  - type: list
+    description: List of LLM backends with their tokens.
+    items:
+      backend_name:
+        type: string
+        description: Name of the LLM backend (e.g., OpenAI, Azure OpenAI).
+      token:
+        type: string
+        description: API token for the LLM backend.
+
+update_frequency:
+  type: string
+  description: Frequency of knowledge base updates (e.g., daily, weekly).
+  default: "weekly"
