@@ -1,0 +1,22 @@
+directives:
+  - "docs/coding-standards.md"
+  - "docs/review-guidelines.md"
+
+exclusions:
+  - "tests/"
+  - "t/"
+  - "build/"
+  - "README.md"
+
+llm_parameters:
+  temperature: 0.8
+  max_tokens: 1500
+  model_name: "gpt-4"
+
+llm_backends:
+  - backend_name: "OpenAI"
+    token: "your-openai-api-token"
+  - backend_name: "Azure OpenAI"
+    token: "your-azure-api-token"
+
+update_frequency: "daily"

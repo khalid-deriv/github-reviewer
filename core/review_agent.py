@@ -1,12 +1,12 @@
 import os
 import sys
-from core.github_auth import authenticate_github
-from core.github_pr import fetch_pull_request_details, fetch_pull_request_diff, post_inline_comments
-from core.config_validator import load_config, validate_config
-from core.prompt_generator import generate_review_prompt
-from core.diff_analyzer import analyze_diff
-from core.llm_wrapper import LLMWrapper
-from core.logger import setup_logger
+from github_auth import authenticate_github
+from github_pr import fetch_pull_request_details, fetch_pull_request_diff, post_inline_comments
+from config_validator import load_config, validate_config
+from prompt_generator import generate_review_prompt
+from diff_analyzer import analyze_diff
+from llm_wrapper import LLMWrapper
+from logger import setup_logger
 
 # Initialize logger
 logger = setup_logger()
@@ -62,7 +62,8 @@ def main():
             })
         post_inline_comments(session, repo_name, pr_number, comments)
 
-        logger.info("Pull request review completed successfully.")
+        logger.info("Pull request review completed su"
+        "cessfully.")
 
     except Exception as e:
         logger.error(f"An error occurred during the review process: {e}")

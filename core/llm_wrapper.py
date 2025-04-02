@@ -1,6 +1,6 @@
 import requests
 import time
-from core.logger import setup_logger
+from logger import setup_logger
 
 # Initialize logger
 logger = setup_logger()

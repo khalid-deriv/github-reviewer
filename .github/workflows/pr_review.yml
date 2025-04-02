@@ -7,6 +7,9 @@ on:
 jobs:
   validate-and-review:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./code-review
 
     steps:
       # Step 1: Check out the repository
@@ -17,7 +20,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.12'
 
       # Step 3: Install dependencies
       - name: Install dependencies
@@ -34,5 +37,7 @@ jobs:
       - name: Run review agent
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           python core/review_agent.py

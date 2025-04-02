@@ -1,5 +1,5 @@
 import requests
-from core.logger import setup_logger
+from logger import setup_logger
 
 # Initialize logger
 logger = setup_logger()
@@ -87,3 +87,30 @@ def fetch_pull_request_diff(session, repo_name, pr_number):
     logger.info(f"Successfully fetched diff for PR #{pr_number}")
     
     return diff_response.text
+
+def post_inline_comments(session, repo_name, pr_number, comments):
+    """
+    Post inline comments on a pull request.
+
+    Args:
+        session: Authenticated GitHub session.
+        repo_name: Repository name in the format 'owner/repo'.
+        pr_number: Pull request number.
+        comments: List of comments to post, each containing 'path', 'position', and 'body'.
+    """
+    try:
+        for comment in comments:
+            url = f"https://api.github.com/repos/{repo_name}/pulls/{pr_number}/comments"
+            payload = {
+                "path": comment["path"],
+                "position": comment["position"],
+                "body": comment["body"]
+            }
+            response = session.post(url, json=payload)
+            if response.status_code != 201:
+                logger.error(f"Failed to post comment: {response.json().get('message', 'Unknown error')}")
+            else:
+                logger.info(f"Comment posted successfully on {comment['path']} at position {comment['position']}.")
+    except Exception as e:
+        logger.error(f"An error occurred while posting comments: {e}")
+        raise e

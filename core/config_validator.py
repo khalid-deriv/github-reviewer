@@ -1,6 +1,6 @@
 import yaml
 import os
-from core.logger import setup_logger
+from logger import setup_logger
 
 class ConfigValidationError(Exception):
     """Custom exception for configuration validation errors."""
@@ -65,7 +65,7 @@ def validate_config(config):
 
 def main():
     """Main function to load and validate the configuration."""
-    config_path = "../config/schema.yaml"  # Adjust path as needed
+    config_path = "config/config.yaml"  # Adjust path as needed
     try:
         config = load_config(config_path)
         validate_config(config)
