@@ -4,7 +4,14 @@ directives:
   - type: list
     description: List of paths to `.md` files containing coding standards and guidelines.
     items:
-      type: string
+      general_guidelines:
+        type: string
+        description: Path to the general coding standards file.
+        default: "../docs/general_guidelines.md"
+      formatting_guidelines:
+        type: string
+        description: Path to the formatting guidelines file.
+        default: "../docs/formatting_guidelines.md"
 
 exclusions:
   - type: list
