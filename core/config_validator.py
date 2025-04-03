@@ -55,8 +55,8 @@ def validate_config(config):
         raise ConfigValidationError("`llm_backends` must be a list of dictionaries.")
     
     for backend in config["llm_backends"]:
-        if not isinstance(backend, dict) or "backend_name" not in backend or "token" not in backend:
-            raise ConfigValidationError("Each LLM backend must be a dictionary with `backend_name` and `token`.")
+        if not isinstance(backend, dict) or "backend_name" not in backend or "token" not in backend or "url" not in backend:
+            raise ConfigValidationError("Each LLM backend must be a dictionary with `backend_name`, `url`, and `token`.")
     
     if not isinstance(config["update_frequency"], str):
         raise ConfigValidationError("`update_frequency` must be a string.")
@@ -72,6 +72,7 @@ def main():
         print("Configuration is valid.")
     except (FileNotFoundError, ConfigValidationError) as e:
         print(f"Configuration validation failed: {e}")
+        raise e
 
 if __name__ == "__main__":
     main()

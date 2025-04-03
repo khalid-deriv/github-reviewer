@@ -32,10 +32,13 @@ llm_backends:
     items:
       backend_name:
         type: string
-        description: Name of the LLM backend (e.g., OpenAI, Azure OpenAI).
+        description: Name of the LLM backend (e.g., OpenAI, HuggingFace).
       token:
         type: string
         description: API token for the LLM backend.
+      url:
+        type: string
+        description: The URL of the API.
 
 update_frequency:
   type: string

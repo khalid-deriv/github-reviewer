@@ -17,7 +17,7 @@ def main():
     """
     try:
         # Load and validate configuration
-        config_path = os.path.join(os.path.dirname(__file__), "../config/schema.yaml")
+        config_path = os.path.join(os.path.dirname(__file__), "../config/config.yaml")
         config = load_config(config_path)
         validate_config(config)
 
@@ -47,6 +47,7 @@ def main():
         repository_context = "Repository context is not yet implemented."  # Placeholder
         directives = config["directives"]
         prompt = generate_review_prompt(repository_context, diff_details, directives)
+        print(f"Generated prompt: {prompt}")
 
         # Query the LLM
         llm_wrapper = LLMWrapper(config["llm_backends"], retry_attempts=3, retry_delay=2)
@@ -67,7 +68,7 @@ def main():
 
     except Exception as e:
         logger.error(f"An error occurred during the review process: {e}")
-        sys.exit(1)
+        raise e
 
 if __name__ == "__main__":
     main()

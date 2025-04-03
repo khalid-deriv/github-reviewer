@@ -41,7 +41,7 @@ class LLMWrapper:
             "Authorization": f"Bearer {backend['token']}",
             "Content-Type": "application/json"
         }
-        url = backend.get("url", f"https://api.{backend['backend_name'].lower()}.com/v1/completions")
+        url = backend.get("url")
         
         for attempt in range(1, self.retry_attempts + 1):
             try:
