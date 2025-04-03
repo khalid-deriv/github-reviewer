@@ -77,7 +77,7 @@ class LLMWrapper:
             Exception: If all backends fail.
         """
         payload = {
-            "prompt": prompt,
+            "input": prompt,
             "max_tokens": max_tokens,
             "temperature": temperature,
             "top_p": top_p
@@ -86,6 +86,9 @@ class LLMWrapper:
         for backend in self.backends:
             try:
                 logger.info(f"Querying backend: {backend['backend_name']}")
+                # Set the model name in the payload if specified
+                if "model_name" in backend:
+                    payload["model"] = backend["model_name"]
                 return self._make_request(backend, payload)
             except Exception as e:
                 logger.error(f"Backend {backend['backend_name']} failed: {e}")

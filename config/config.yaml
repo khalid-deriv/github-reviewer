@@ -14,9 +14,7 @@ llm_parameters:
   model_name: "gpt-4"
 
 llm_backends:
-  # - backend_name: "OpenAI"
-  #   token: "your-openai-api-token"
-  #   url: "https://api.openai.com/v1/engines/gpt-4/completions"
+
   - backend_name: "HuggingFace"
     model_name: ""
     token: "TOKEN"

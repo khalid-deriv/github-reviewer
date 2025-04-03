@@ -16,3 +16,9 @@ This project implements an AI-powered GitHub pull request review agent. Acting a
 
 ## Getting Started
 Refer to the `spec.md` file for detailed specifications and setup instructions.
+
+## Deployment
+### Deploy Ollama model locally
+```sh
+ollama pull llama3.2:3b-instruct-fp16
+```

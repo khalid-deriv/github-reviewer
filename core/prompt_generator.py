@@ -32,20 +32,20 @@ def generate_review_prompt(repository_context, diff_details, directives):
         4. Focus on SQL query optimization if relevant.\n\n
         The output MUST be in this json format where each comment is an element of the array:\n
     """, """
-        ```json
-        \{
+        {
             comments: [
-                \{
+                {
                     file_path: ,
                     start_line_number: 1,
                     end_line_number: 10,
                     content: Comment content,
-                \}
+                }
             ]
-        \}
-        ```\n
+        }
+        \n
         Where each comment is directed at a portion of the diff identified by the start_line_number and end_line_number. Calculate the appropriate start_line_number and end_line_number to highlight only the part of the diff that is relevant to the comment.\n
-        IMPORTANT: make sure that the start_line_number and end_line_number values are must be part of the same hunk as the line\n\n
+        IMPORTANT: make sure that the start_line_number and end_line_number values must be part of the same hunk as the line\n\n
+        IMPORTANT: DO NOT include any other text, only the json format.\n
 
         Begin your review below:\n
 
