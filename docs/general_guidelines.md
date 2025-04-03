@@ -7,3 +7,6 @@
 ## Code Formatting
 - Use meaningful variable and function names.
 
+## Suggestions
+- Make code suggestions whenever applicable
+- wrap code suggestions in markdown code segment with the appropriate language (example: '```sql' for SQL)

@@ -1296,5 +1296,3 @@ However, the inlineable one \>500 times faster.
 ```
 
 This is a contrived example. The effect in real life depends on the circumstances.
-
-#### PLPGSQL functions

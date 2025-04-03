@@ -1,3 +1,11 @@
+import os
+
+def load_directive_content(directive):
+    if os.path.isfile(directive):
+        with open(directive, 'r') as file:
+            directive = file.read().strip()
+    return directive
+
 def generate_review_prompt(repository_context, diff_details, directives):
     """
     Generate a formatted prompt for the LLM to review a pull request.
@@ -11,7 +19,7 @@ def generate_review_prompt(repository_context, diff_details, directives):
         str: A formatted prompt string for the LLM.
     """
     # Format the directives into a readable string
-    formatted_directives = "\n".join(f"- {directive}" for directive in directives)
+    formatted_directives = "\n\n".join(f"{load_directive_content(directive)}" for directive in directives)
 
     # Construct the prompt
     prompt = "\n".join([f"""
