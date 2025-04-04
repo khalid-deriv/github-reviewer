@@ -1,6 +1,6 @@
 directives:
-  - "docs/coding-standards.md"
-  - "docs/review-guidelines.md"
+  - "docs/formatting_guidelines.md"
+  - "docs/general_guidelines.md"
 
 exclusions:
   - "tests/"
@@ -19,8 +19,5 @@ llm_backends:
     model_name: ""
     token: "TOKEN"
     url: "https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B-Instruct"
-    # url: "https://api-inference.huggingface.co/models/meta-llama/Llama-2-7b-hf"
-    # url: "https://api-inference.huggingface.co/models/meta-llama/Llama-3.3-70B-Instruct"
-    # url: "https://api-inference.huggingface.co/models/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
 
 update_frequency: "daily"
